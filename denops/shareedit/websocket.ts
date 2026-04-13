@@ -148,7 +148,7 @@ export async function runWsServer(denops: Denops) {
   // Clean up stale sessions before starting new server
   await cleanupSessions();
 
-  const server = Deno.serve({ port: 0 }, (req) => handleWs(denops, req));
+  const server = Deno.serve({ port: 0, hostname: "0.0.0.0" }, (req) => handleWs(denops, req));
   currentServer = server;
   const port = server.addr.port;
 
